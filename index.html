@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🇺🇸🇮🇱 OPERATION FREEDOM SWEEP — Strait of Hormuz 🦅</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&family=Anton&family=Oswald:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --freedom-blue: #002868;
+      --freedom-red: #BF0A30;
+      --freedom-white: #FFFFFF;
+      --star-gold: #FFD700;
+      --israel-blue: #0038b8;
+      --bloomberg-black: #0a0a0a;
+      --bloomberg-dark: #121212;
+      --bloomberg-panel: #1a1a1a;
+      --bloomberg-border: #2a2a2a;
+      --bloomberg-orange: #ff8c00;
+      --bloomberg-green: #00d26a;
+      --bloomberg-red: #ff3b3b;
+      --bloomberg-blue: #3b82f6;
+      --bloomberg-cyan: #00c8ff;
+      --bloomberg-text: #d4d4d4;
+      --bloomberg-dim: #666;
+      --bloomberg-yellow: #fbbf24;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bloomberg-black);
+      color: var(--bloomberg-text);
+      font-family: 'IBM Plex Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* PATRIOTIC BANNER */
+    .freedom-banner {
+      width: 100%;
+      background: linear-gradient(90deg, var(--freedom-blue) 0%, var(--freedom-blue) 40%, var(--freedom-red) 40%, var(--freedom-red) 60%, var(--israel-blue) 60%, var(--israel-blue) 100%);
+      height: 4px;
+    }
+
+    .top-banner {
+      width: 100%;
+      background: var(--bloomberg-panel);
+      border-bottom: 1px solid var(--bloomberg-border);
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .top-banner .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: var(--bloomberg-orange);
+      white-space: nowrap;
+    }
+
+    .news-ticker-strip {
+      flex: 1;
+      overflow: hidden;
+      margin: 0 16px;
+      position: relative;
+      height: 20px;
+    }
+
+    .news-ticker-text {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 0.65rem;
+      color: var(--bloomberg-yellow);
+      animation: tickerScroll 45s linear infinite;
+      letter-spacing: 1px;
+    }
+
+    @keyframes tickerScroll {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .top-right-flags {
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    /* MAIN HEADER */
+    .header {
+      text-align: center;
+      padding: 12px 16px 6px;
+      position: relative;
+    }
+
+    .header h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      line-height: 1.1;
+      background: linear-gradient(180deg, var(--freedom-white) 0%, var(--star-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.15));
+    }
+
+    .header .tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 6px;
+      color: var(--bloomberg-orange);
+      margin-top: 2px;
+    }
+
+    .header .eagle-line {
+      font-size: 0.6rem;
+      color: var(--bloomberg-dim);
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .game-container {
+      max-width: 1150px;
+      width: 100%;
+      padding: 0 10px 16px;
+    }
+
+    /* BLOOMBERG TERMINAL OIL SECTION */
+    .terminal-row {
+      display: flex;
+      gap: 2px;
+      margin: 8px 0;
+    }
+
+    .terminal-panel {
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      padding: 8px 12px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .terminal-panel .panel-header {
+      font-size: 0.55rem;
+      color: var(--bloomberg-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--bloomberg-border);
+      padding-bottom: 3px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .oil-main {
+      flex: 0 0 200px;
+    }
+
+    .oil-price-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .oil-price-big.up {
+      color: var(--bloomberg-red);
+    }
+
+    .oil-price-big.down {
+      color: var(--bloomberg-green);
+    }
+
+    .oil-change-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+      font-size: 0.7rem;
+    }
+
+    .oil-change-row .up {
+      color: var(--bloomberg-red);
+    }
+
+    .oil-change-row .down {
+      color: var(--bloomberg-green);
+    }
+
+    .oil-chart-panel {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .oil-chart-panel canvas {
+      width: 100%;
+      height: 70px;
+      display: block;
+    }
+
+    .oil-stats {
+      flex: 0 0 160px;
+      font-size: 0.65rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+      border-bottom: 1px solid rgba(42, 42, 42, 0.5);
+    }
+
+    .stat-row .label {
+      color: var(--bloomberg-dim);
+    }
+
+    .stat-row .val {
+      color: var(--bloomberg-text);
+    }
+
+    .stat-row .val.red {
+      color: var(--bloomberg-red);
+    }
+
+    .stat-row .val.green {
+      color: var(--bloomberg-green);
+    }
+
+    .oil-headline-bar {
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      padding: 5px 12px;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .headline-tag {
+      background: var(--bloomberg-red);
+      color: white;
+      padding: 1px 6px;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .headline-tag.green {
+      background: var(--bloomberg-green);
+      color: black;
+    }
+
+    .headline-tag.orange {
+      background: var(--bloomberg-orange);
+      color: black;
+    }
+
+    .headline-text {
+      color: var(--bloomberg-text);
+      letter-spacing: 0.5px;
+    }
+
+    .headline-text.crisis {
+      color: var(--bloomberg-red);
+    }
+
+    .headline-text.calm {
+      color: var(--bloomberg-green);
+    }
+
+    /* DIFFICULTY + STATUS */
+    .controls-row {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 6px;
+    }
+
+    .diff-panel {
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .diff-panel .panel-label {
+      font-size: 0.55rem;
+      color: var(--bloomberg-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .diff-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border: 1px solid var(--bloomberg-border);
+      background: transparent;
+      color: var(--bloomberg-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .diff-btn:hover {
+      color: var(--bloomberg-text);
+      border-color: var(--bloomberg-orange);
+    }
+
+    .diff-btn.active {
+      color: var(--bloomberg-orange);
+      border-color: var(--bloomberg-orange);
+      background: rgba(255, 140, 0, 0.08);
+    }
+
+    .status-panel {
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .status-item .s-label {
+      font-size: 0.5rem;
+      color: var(--bloomberg-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .status-item .s-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--bloomberg-cyan);
+    }
+
+    .status-item .s-value.danger {
+      color: var(--bloomberg-red);
+    }
+
+    .reset-btn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      padding: 4px 14px;
+      border: 1px solid var(--bloomberg-orange);
+      background: transparent;
+      color: var(--bloomberg-orange);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .reset-btn:hover {
+      background: rgba(255, 140, 0, 0.1);
+    }
+
+    .flag-toggle {
+      position: relative;
+    }
+
+    .flag-toggle.active {
+      background: rgba(255, 59, 59, 0.15);
+      border-color: var(--bloomberg-red);
+      color: var(--bloomberg-red);
+      animation: flagPulse 1s infinite;
+    }
+
+    @keyframes flagPulse {
+
+      0%,
+      100% {
+        box-shadow: none;
+      }
+
+      50% {
+        box-shadow: 0 0 8px rgba(255, 59, 59, 0.3);
+      }
+    }
+
+    .game-message {
+      text-align: center;
+      padding: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .game-message.win {
+      color: var(--bloomberg-green);
+    }
+
+    .game-message.lose {
+      color: var(--bloomberg-red);
+    }
+
+    /* GRID */
+    .grid-wrapper {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0;
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+    }
+
+    .grid-header {
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      font-size: 0.5rem;
+      color: var(--bloomberg-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .grid {
+      display: inline-grid;
+      gap: 1px;
+      background: rgba(30, 30, 30, 0.5);
+      padding: 1px;
+      user-select: none;
+      margin: 16px 6px 6px;
+    }
+
+    .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.12s;
+      border: none;
+      outline: none;
+      position: relative;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .cell.water.hidden {
+      background: #0c2d48;
+      border: 1px solid rgba(0, 200, 255, 0.04);
+    }
+
+    .cell.water.hidden:hover {
+      background: #154060;
+      border-color: rgba(0, 200, 255, 0.15);
+    }
+
+    .cell.land {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .cell.land.iran {
+      background: #3d2b10;
+      border: 1px solid #5c4020;
+    }
+
+    .cell.land.oman {
+      background: #4a3520;
+      border: 1px solid #6b5030;
+    }
+
+    .cell.land.uae {
+      background: #c8a86e;
+      border: 1px solid #a08548;
+    }
+
+    .cell.land.island {
+      background: #554428;
+      border: 1px solid #6b5830;
+    }
+
+    .cell.revealed {
+      background: #080e18;
+      cursor: default;
+    }
+
+    .cell.flagged {
+      background: #0c2d48;
+      border: 1px solid rgba(255, 140, 0, 0.3);
+    }
+
+    .cell.flagged::after {
+      content: '🇺🇸';
+    }
+
+    .cell.mine-hit {
+      background: rgba(255, 59, 59, 0.4) !important;
+      animation: boom 0.5s ease-out;
+    }
+
+    .cell.mine-revealed {
+      background: rgba(255, 59, 59, 0.12);
+    }
+
+    .cell.mine-revealed::after,
+    .cell.mine-hit::after {
+      content: '💣';
+    }
+
+    @keyframes boom {
+      0% {
+        transform: scale(1)
+      }
+
+      25% {
+        transform: scale(1.4)
+      }
+
+      100% {
+        transform: scale(1)
+      }
+    }
+
+    .cell.n1 {
+      color: #4fc3f7
+    }
+
+    .cell.n2 {
+      color: #81c784
+    }
+
+    .cell.n3 {
+      color: #ff8a65
+    }
+
+    .cell.n4 {
+      color: #ba68c8
+    }
+
+    .cell.n5 {
+      color: #e57373
+    }
+
+    .cell.n6 {
+      color: #4dd0e1
+    }
+
+    .cell.n7 {
+      color: #ffd54f
+    }
+
+    .cell.n8 {
+      color: #ef5350
+    }
+
+    .cell.just-revealed {
+      animation: ping 0.4s ease-out;
+    }
+
+    @keyframes ping {
+      0% {
+        box-shadow: inset 0 0 6px rgba(0, 200, 255, 0.3)
+      }
+
+      100% {
+        box-shadow: none
+      }
+    }
+
+    /* Country labels on map */
+    .map-label {
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .legend-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 6px;
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      border-top: none;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.6rem;
+      color: var(--bloomberg-dim);
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.5rem;
+      color: var(--bloomberg-dim);
+      letter-spacing: 2px;
+      padding: 8px 16px 16px;
+      opacity: 0.5;
+    }
+
+    /* RESULT OVERLAY */
+    .result-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 100;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.4s;
+    }
+
+    .result-overlay.visible {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .result-card {
+      background: var(--bloomberg-panel);
+      border: 1px solid var(--bloomberg-border);
+      padding: 28px 36px;
+      text-align: center;
+      max-width: 560px;
+      width: 92%;
+    }
+
+    .result-card .result-flags {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .result-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .result-title.win {
+      color: var(--bloomberg-green);
+    }
+
+    .result-title.lose {
+      color: var(--bloomberg-red);
+    }
+
+    .result-subtitle {
+      font-size: 0.65rem;
+      color: var(--bloomberg-dim);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .result-oil-label {
+      font-size: 0.55rem;
+      color: var(--bloomberg-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .result-oil-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .result-oil-price.high {
+      color: var(--bloomberg-red);
+    }
+
+    .result-oil-price.low {
+      color: var(--bloomberg-green);
+    }
+
+    .result-headline {
+      font-size: 0.6rem;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    .result-headline.crisis {
+      color: var(--bloomberg-red);
+    }
+
+    .result-headline.calm {
+      color: var(--bloomberg-green);
+    }
+
+    .result-chart {
+      width: 100%;
+      height: 90px;
+      margin: 14px 0;
+    }
+
+    .result-trump-quote {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      color: var(--star-gold);
+      font-style: italic;
+      margin: 10px 0;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+    }
+
+    .youre-fired {
+      display: none;
+      font-family: 'Anton', sans-serif;
+      font-size: 3.5rem;
+      color: var(--bloomberg-red);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      line-height: 1;
+      margin: 10px 0 4px;
+      text-shadow: 0 0 30px rgba(255, 59, 59, 0.4), 0 0 60px rgba(255, 59, 59, 0.2);
+      animation: fireFlicker 0.15s ease-in-out 5;
+      position: relative;
+    }
+
+    .youre-fired.visible {
+      display: block;
+    }
+
+    .youre-fired .finger {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .youre-fired .subfire {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      color: var(--bloomberg-orange);
+      letter-spacing: 4px;
+      margin-top: 2px;
+    }
+
+    @keyframes fireFlicker {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(1.04) rotate(-0.5deg);
+      }
+
+      75% {
+        transform: scale(1.02) rotate(0.5deg);
+      }
+    }
+
+    .result-btn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      padding: 8px 28px;
+      border: 1px solid var(--bloomberg-orange);
+      background: transparent;
+      color: var(--bloomberg-orange);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .result-btn:hover {
+      background: rgba(255, 140, 0, 0.1);
+    }
+
+    @media (max-width: 750px) {
+      .terminal-row {
+        flex-direction: column;
+      }
+
+      .oil-main {
+        flex: unset;
+      }
+
+      .oil-stats {
+        flex: unset;
+      }
+
+      .oil-stats .stat-row {
+        display: inline-flex;
+        gap: 6px;
+        border: none;
+        padding: 2px 8px 2px 0;
+      }
+
+      .controls-row {
+        flex-direction: column;
+      }
+
+      .header h1 {
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+      }
+
+      .header .tagline {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+      }
+
+      .header .eagle-line {
+        font-size: 0.5rem;
+        letter-spacing: 1px;
+      }
+
+      .oil-price-big {
+        font-size: 2rem;
+      }
+
+      .result-card {
+        padding: 18px;
+      }
+
+      .result-oil-price {
+        font-size: 2.2rem;
+      }
+
+      .youre-fired {
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+      }
+
+      .youre-fired .finger {
+        font-size: 1.8rem;
+      }
+
+      .youre-fired .subfire {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+
+      .result-trump-quote {
+        font-size: 0.6rem;
+      }
+
+      .diff-panel {
+        flex-wrap: wrap;
+      }
+
+      .diff-btn {
+        padding: 5px 8px;
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+      }
+
+      .status-panel {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .top-banner .logo {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+      }
+
+      .oil-headline-bar {
+        flex-wrap: wrap;
+      }
+
+      .game-message {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+      }
+
+      .legend-bar {
+        gap: 10px;
+      }
+
+      .legend-item {
+        font-size: 0.55rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .game-container {
+        padding: 0 4px 10px;
+      }
+
+      .header {
+        padding: 8px 8px 4px;
+      }
+
+      .header h1 {
+        font-size: 1.05rem;
+        letter-spacing: 2px;
+      }
+
+      .header .tagline {
+        font-size: 0.55rem;
+        letter-spacing: 2px;
+      }
+
+      .header .eagle-line {
+        display: none;
+      }
+
+      .oil-price-big {
+        font-size: 1.6rem;
+      }
+
+      .oil-chart-panel canvas {
+        height: 50px;
+      }
+
+      .terminal-panel {
+        padding: 6px 8px;
+      }
+
+      .diff-btn {
+        padding: 4px 6px;
+        font-size: 0.5rem;
+      }
+
+      .status-panel {
+        gap: 6px;
+        padding: 6px 8px;
+      }
+
+      .s-value {
+        font-size: 0.9rem;
+      }
+
+      .reset-btn {
+        font-size: 0.65rem;
+        padding: 3px 10px;
+        letter-spacing: 2px;
+      }
+
+      .game-message {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        padding: 3px;
+      }
+
+      .grid-wrapper {
+        padding: 2px 0;
+      }
+
+      .grid-header {
+        font-size: 0.4rem;
+      }
+
+      .legend-bar {
+        gap: 6px;
+        padding: 4px;
+      }
+
+      .legend-item {
+        font-size: 0.5rem;
+      }
+
+      .youre-fired {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+
+      .youre-fired .finger {
+        font-size: 1.4rem;
+      }
+
+      .result-title {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+      }
+
+      .result-oil-price {
+        font-size: 1.8rem;
+      }
+
+      .result-trump-quote {
+        font-size: 0.55rem;
+      }
+
+      .result-btn {
+        font-size: 0.75rem;
+        padding: 6px 20px;
+      }
+
+      .result-card {
+        padding: 14px;
+      }
+
+      .top-banner .logo {
+        font-size: 0.65rem;
+      }
+
+      .top-right-flags {
+        font-size: 0.9rem;
+      }
+
+      .oil-headline-bar {
+        font-size: 0.5rem;
+        padding: 4px 8px;
+      }
+
+      .headline-tag {
+        font-size: 0.45rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="freedom-banner"></div>
+
+  <div class="top-banner">
+    <div class="logo">FREEDOM TERMINAL™</div>
+    <div class="news-ticker-strip">
+      <div class="news-ticker-text" id="newsTicker">
+        🦅 BREAKING: USS Abraham Lincoln carrier group deployed to Persian Gulf ★ Iron Dome upgrade signed into law ★
+        "Nobody secures a strait better than us, believe me" — 45th & 47th President ★ CENTCOM: "Mine clearance
+        operations proceeding bigly" ★ IDF Naval Command offers technical support ★ Oil futures react to Freedom Sweep
+        operations ★ Mar-a-Lago situation room: "Looking very good, very strong" ★ 🇺🇸🇮🇱 GREATEST ALLIANCE IN HISTORY
+        🇮🇱🇺🇸 ★
+      </div>
+    </div>
+    <div class="top-right-flags">🇺🇸🇮🇱🦅</div>
+  </div>
+
+  <div class="header">
+    <h1>🦅 OPERATION FREEDOM SWEEP 🦅</h1>
+    <div class="tagline">STRAIT OF HORMUZ • NAVAL MINE CLEARANCE DIVISION</div>
+    <div class="eagle-line">★ MAKING THE STRAIT GREAT AGAIN ★ A JOINT US-ISRAEL INITIATIVE ★ TREMENDOUS SECURITY ★</div>
+  </div>
+
+  <div class="game-container">
+    <!-- BLOOMBERG TERMINAL OIL SECTION -->
+    <div class="terminal-row">
+      <div class="terminal-panel oil-main">
+        <div class="panel-header"><span>BRENT CRUDE</span><span id="oilTime">--:--:--</span></div>
+        <div class="oil-price-big down" id="oilPrice">$102.00</div>
+        <div class="oil-change-row">
+          <span id="oilChangeAbs" class="down">▼ 0.00</span>
+          <span id="oilChangePct" class="down">(0.00%)</span>
+        </div>
+        <div style="font-size:0.5rem;color:var(--bloomberg-dim);margin-top:4px">ICE FUTURES EUROPE</div>
+      </div>
+
+      <div class="terminal-panel oil-chart-panel">
+        <div class="panel-header"><span>INTRADAY</span><span>1D</span></div>
+        <canvas id="oilChart"></canvas>
+      </div>
+
+      <div class="terminal-panel oil-stats">
+        <div class="panel-header"><span>MARKET DATA</span></div>
+        <div class="stat-row"><span class="label">Open</span><span class="val">102.00</span></div>
+        <div class="stat-row"><span class="label">High</span><span class="val" id="statHigh">102.00</span></div>
+        <div class="stat-row"><span class="label">Low</span><span class="val" id="statLow">102.00</span></div>
+        <div class="stat-row"><span class="label">Vol</span><span class="val" id="statVol">142.3K</span></div>
+        <div class="stat-row"><span class="label">Strait</span><span class="val" id="statStrait">OPEN</span></div>
+        <div class="stat-row"><span class="label">Threat</span><span class="val" id="statThreat">LOW</span></div>
+      </div>
+    </div>
+
+    <div class="oil-headline-bar">
+      <span class="headline-tag orange" id="headlineTag">ALERT</span>
+      <span class="headline-text" id="headlineText">Mine clearance operation initiated — markets cautious</span>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="controls-row">
+      <div class="diff-panel">
+        <span class="panel-label">OpSec Level</span>
+        <button class="diff-btn active" data-level="patrol" onclick="setDifficulty('patrol')">🚤 PATROL</button>
+        <button class="diff-btn" data-level="frigate" onclick="setDifficulty('frigate')">🚢 FRIGATE</button>
+        <button class="diff-btn" data-level="destroyer" onclick="setDifficulty('destroyer')">⚓ DESTROYER</button>
+        <button class="diff-btn" data-level="admiral" onclick="setDifficulty('admiral')">💀 ADMIRAL</button>
+      </div>
+      <div class="status-panel">
+        <div class="status-item">
+          <div class="s-label">Mines</div>
+          <div class="s-value" id="mineCount">0</div>
+        </div>
+        <div class="status-item">
+          <div class="s-label">Time</div>
+          <div class="s-value" id="timer">000</div>
+        </div>
+        <button class="reset-btn" onclick="resetGame()">🦅 NEW MISSION</button>
+        <button class="reset-btn flag-toggle" id="flagToggle" onclick="toggleFlagMode()">🇺🇸 FLAG</button>
+        <div class="status-item">
+          <div class="s-label">Cleared</div>
+          <div class="s-value" id="cleared">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-message" id="gameMessage"></div>
+
+    <!-- GRID -->
+    <div class="grid-wrapper">
+      <div class="grid-header">★ OPERATIONAL THEATER — 26°34'N 56°15'E ★</div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="legend-bar">
+      <div class="legend-item"><span style="font-size:0.8rem">💣</span> Iranian Mine</div>
+      <div class="legend-item"><span style="font-size:0.8rem">🇺🇸</span> Flag (Right-click)</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#3d2b10;border:1px solid #5c4020"></span>
+        Iran</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#4a3520;border:1px solid #6b5030"></span>
+        Oman</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#c8a86e;border:1px solid #a08548"></span>
+        UAE</div>
+    </div>
+
+    <div class="footer">
+      ★ FREEDOM TERMINAL™ — A PRODUCT OF AMERICAN EXCELLENCE ★ NOT FINANCIAL ADVICE ★ VERY LEGAL, VERY COOL ★
+    </div>
+  </div>
+
+  <!-- RESULT OVERLAY -->
+  <div class="result-overlay" id="resultOverlay">
+    <div class="result-card">
+      <div class="result-flags" id="resultFlags"></div>
+      <div class="youre-fired" id="youreFired">
+        <span class="finger">👉</span>
+        YOU'RE FIRED!
+        <div class="subfire">— From the Situation Room at Mar-a-Lago —</div>
+      </div>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-subtitle" id="resultSubtitle"></div>
+      <div>
+        <div class="result-oil-label">BRENT CRUDE — FINAL</div>
+        <div class="result-oil-price" id="resultOilPrice"></div>
+        <div class="result-headline" id="resultHeadline"></div>
+      </div>
+      <canvas class="result-chart" id="resultChart"></canvas>
+      <div class="result-trump-quote" id="resultQuote"></div>
+      <button class="result-btn" onclick="closeOverlay()">🦅 DEPLOY AGAIN</button>
+    </div>
+  </div>
+
+  <script>
+    // =====================================================
+    // STRAIT OF HORMUZ — ACCURATE MAP FROM SATELLITE
+    // Based on the satellite image: Iran top, wide persian gulf on left,
+    // strait narrows in center-right, Musandam sticks up from bottom-center,
+    // Gulf of Oman opens to the right, UAE coast bottom-left
+    // Qeshm = large elongated island near Iran coast
+    // Several smaller islands (Hormuz, Larak, Hengam)
+    // =====================================================
+    function generateStraitMap(rows, cols) {
+      const map = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const rf = r / (rows - 1);
+          const cf = c / (cols - 1);
+
+          // === IRAN (top) ===
+          // From satellite: Iran coast runs across the top, dipping south in center
+          // creating the narrow strait. Coast is irregular with bays.
+          let iranCoast;
+
+          if (cf < 0.15) {
+            // Far left: coast comes down a bit
+            iranCoast = 0.12 + 0.04 * Math.sin(cf * 20);
+          } else if (cf < 0.40) {
+            // Left-center: coast bulges south (Bandar Abbas area)
+            const t = (cf - 0.15) / 0.25;
+            iranCoast = 0.12 + 0.14 * Math.sin(t * Math.PI);
+          } else if (cf < 0.55) {
+            // Center: narrow part of strait, coast stays south
+            const t = (cf - 0.40) / 0.15;
+            iranCoast = 0.26 - 0.06 * t;
+          } else if (cf < 0.75) {
+            // Right of strait: coast curves north sharply (entering Gulf of Oman)
+            const t = (cf - 0.55) / 0.20;
+            iranCoast = 0.20 - 0.10 * t * t;
+          } else {
+            // Far right: Iran coast at top
+            iranCoast = 0.10 - 0.04 * (cf - 0.75) / 0.25;
+          }
+
+          // Add roughness
+          iranCoast += 0.015 * Math.sin(cf * 40 + 2.0) + 0.008 * Math.sin(cf * 80 + 5.0);
+
+          if (rf < iranCoast) { map[r][c] = 1; continue; }
+
+          // === QESHM ISLAND ===
+          // Large elongated island parallel to Iran coast, left-center area
+          if (cf > 0.12 && cf < 0.42) {
+            const islandT = (cf - 0.12) / 0.30;
+            const islandCenterR = iranCoast + 0.035 + 0.015 * Math.sin(islandT * Math.PI);
+            const islandWidth = 0.025 * Math.sin(islandT * Math.PI);
+            if (Math.abs(rf - islandCenterR) < islandWidth) {
+              map[r][c] = 4; continue; // island
+            }
+          }
+
+          // === HORMUZ ISLAND ===
+          // Small island east of Qeshm
+          {
+            const hx = 0.42, hy = 0.28;
+            const d = Math.sqrt(Math.pow((cf - hx) / 0.02, 2) + Math.pow((rf - hy) / 0.015, 2));
+            if (d < 1) { map[r][c] = 4; continue; }
+          }
+
+          // === LARAK ISLAND ===
+          {
+            const lx = 0.48, ly = 0.28;
+            const d = Math.sqrt(Math.pow((cf - lx) / 0.015, 2) + Math.pow((rf - ly) / 0.012, 2));
+            if (d < 1) { map[r][c] = 4; continue; }
+          }
+
+          // === HENGAM ISLAND ===
+          {
+            const hx = 0.38, hy = 0.32;
+            const d = Math.sqrt(Math.pow((cf - hx) / 0.012, 2) + Math.pow((rf - hy) / 0.010, 2));
+            if (d < 1) { map[r][c] = 4; continue; }
+          }
+
+          // === Small scattered islands in Persian Gulf (left area) ===
+          const smallIslands = [
+            [0.06, 0.38, 0.008], [0.10, 0.45, 0.007], [0.08, 0.52, 0.006],
+            [0.15, 0.50, 0.005], [0.04, 0.30, 0.009], [0.18, 0.42, 0.006],
+          ];
+          let isSmallIsland = false;
+          for (const [ix, iy, ir] of smallIslands) {
+            const d = Math.sqrt(Math.pow((cf - ix) / ir, 2) + Math.pow((rf - iy) / (ir * 0.8), 2));
+            if (d < 1) { isSmallIsland = true; break; }
+          }
+          if (isSmallIsland) { map[r][c] = 4; continue; }
+
+          // === MUSANDAM PENINSULA (Oman) ===
+          // From satellite: A dramatic finger of land sticking UP from the south
+          // centered around cf ~0.48, reaching up to about rf ~0.42
+          // It's quite narrow at the tip and widens toward the base
+          if (cf > 0.38 && cf < 0.58) {
+            const penCenter = 0.48 + 0.02 * Math.sin(rf * 8);
+            const along = Math.max(0, (rf - 0.40)) / 0.55; // 0 at tip, 1 at base
+            if (rf > 0.40) {
+              const halfW = 0.015 + 0.10 * Math.pow(along, 1.3);
+              const dist = Math.abs(cf - penCenter) / halfW;
+              // Irregular edges
+              const edge = 1.0 + 0.1 * Math.sin(rf * 30) + 0.05 * Math.sin(cf * 40);
+              if (dist < edge) { map[r][c] = 2; continue; }
+            }
+          }
+
+          // === OMAN COAST (bottom right) ===
+          // Gulf of Oman coast: runs from Musandam base toward bottom-right
+          if (cf > 0.52) {
+            const omanCoast = 0.70 - 0.25 * Math.pow((cf - 0.52) / 0.48, 0.8);
+            const rough = 0.01 * Math.sin(cf * 35) + 0.005 * Math.sin(rf * 20);
+            if (rf > omanCoast + rough) { map[r][c] = 2; continue; }
+          }
+
+          // Bottom strip = Oman on right side
+          if (rf > 0.90 && cf > 0.45) { map[r][c] = 2; continue; }
+
+          // === UAE COAST (bottom left) ===
+          // From satellite: the sandy UAE coast runs across the bottom-left
+          // It's the bright sandy area with a gentle concave curve
+          {
+            let uaeCoast;
+            if (cf < 0.25) {
+              uaeCoast = 0.82 + 0.06 * Math.sin(cf / 0.25 * Math.PI * 0.5);
+            } else if (cf < 0.42) {
+              const t = (cf - 0.25) / 0.17;
+              uaeCoast = 0.88 - 0.05 * t;
+            } else {
+              uaeCoast = 0.83;
+            }
+            uaeCoast += 0.01 * Math.sin(cf * 25);
+            if (rf > uaeCoast && cf < 0.42 && map[r][c] !== 2) { map[r][c] = 3; continue; }
+          }
+
+          // Bottom strip = UAE on left side
+          if (rf > 0.92 && cf <= 0.45 && map[r][c] !== 2) { map[r][c] = 3; continue; }
+        }
+      }
+      return map;
+    }
+
+    // =====================================================
+    // GAME STATE
+    // =====================================================
+    const LEVELS = {
+      patrol: { rows: 24, cols: 38, mines: 35 },
+      frigate: { rows: 26, cols: 42, mines: 65 },
+      destroyer: { rows: 28, cols: 46, mines: 110 },
+      admiral: { rows: 30, cols: 50, mines: 160 },
+    };
+
+    let currentLevel = 'patrol';
+    let straitMap = [], board = [], revealed = [], flagged = [];
+    let gameOver = false, gameWon = false, firstClick = true;
+    let timerInterval = null, seconds = 0;
+    let totalSafe = 0, revealedCount = 0;
+    let oilHistory = [], currentOilPrice = 85;
+    let oilTickInterval = null;
+    let oilHigh = 102, oilLow = 102;
+    let flagMode = false;
+    const BASE_OIL = 102, WIN_OIL = 60, LOSE_OIL = 255;
+
+    function toggleFlagMode() {
+      flagMode = !flagMode;
+      const btn = document.getElementById('flagToggle');
+      btn.classList.toggle('active', flagMode);
+      btn.textContent = flagMode ? '🚩 FLAGGING' : '🇺🇸 FLAG';
+    }
+
+    // Bloomberg clock
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById('oilTime').textContent =
+        now.toTimeString().substring(0, 8);
+    }, 1000);
+
+    function setDifficulty(level) {
+      currentLevel = level;
+      document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector(`[data-level="${level}"]`).classList.add('active');
+      resetGame();
+    }
+
+    function resetGame() {
+      const { rows, cols, mines } = LEVELS[currentLevel];
+      gameOver = gameWon = false; firstClick = true;
+      seconds = revealedCount = 0;
+      currentOilPrice = BASE_OIL; oilHistory = [BASE_OIL]; oilHigh = 102; oilLow = 102;
+      flagMode = false;
+      const flagBtn = document.getElementById('flagToggle');
+      if (flagBtn) { flagBtn.classList.remove('active'); flagBtn.textContent = '🇺🇸 FLAG'; }
+      clearInterval(timerInterval);
+      clearInterval(oilTickInterval);
+
+      straitMap = generateStraitMap(rows, cols);
+      let wc = 0;
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) if (straitMap[r][c] === 0) wc++;
+      const am = Math.min(mines, Math.floor(wc * 0.30));
+      LEVELS[currentLevel]._m = am;
+      totalSafe = wc - am;
+
+      board = Array.from({ length: rows }, () => Array(cols).fill(0));
+      revealed = Array.from({ length: rows }, () => Array(cols).fill(false));
+      flagged = Array.from({ length: rows }, () => Array(cols).fill(false));
+
+      document.getElementById('timer').textContent = '000';
+      document.getElementById('mineCount').textContent = am;
+      document.getElementById('mineCount').classList.remove('danger');
+      document.getElementById('cleared').textContent = '0%';
+      document.getElementById('gameMessage').textContent = '';
+      document.getElementById('gameMessage').className = 'game-message';
+      document.getElementById('resultOverlay').classList.remove('visible');
+      document.getElementById('statHigh').textContent = '102.00';
+      document.getElementById('statLow').textContent = '102.00';
+      document.getElementById('statStrait').textContent = 'OPEN';
+      document.getElementById('statStrait').className = 'val green';
+      document.getElementById('statThreat').textContent = 'LOW';
+      document.getElementById('statThreat').className = 'val green';
+      updateOilTicker();
+      renderGrid();
+      startOilFluctuations();
+    }
+
+    function placeMines(exR, exC) {
+      const { rows, cols } = LEVELS[currentLevel]; const mines = LEVELS[currentLevel]._m;
+      const excl = new Set();
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        const nr = exR + dr, nc = exC + dc;
+        if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) excl.add(nr * cols + nc);
+      }
+      let placed = 0;
+      while (placed < mines) {
+        const r = Math.floor(Math.random() * rows), c = Math.floor(Math.random() * cols);
+        if (straitMap[r][c] !== 0 || board[r][c] === -1 || excl.has(r * cols + c)) continue;
+        board[r][c] = -1; placed++;
+      }
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        if (board[r][c] === -1 || straitMap[r][c] !== 0) continue;
+        let n = 0;
+        for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && board[nr][nc] === -1) n++;
+        }
+        board[r][c] = n;
+      }
+    }
+
+    function renderGrid() {
+      const { rows, cols } = LEVELS[currentLevel];
+      const grid = document.getElementById('grid');
+      const maxW = Math.min(window.innerWidth - 16, 1120);
+      let cs = Math.floor((maxW - cols) / cols);
+      cs = Math.max(10, Math.min(24, cs));
+      // On very small screens, ensure we fit
+      if (cs * cols > maxW) cs = Math.floor(maxW / cols) - 1;
+      cs = Math.max(10, cs);
+
+      grid.style.gridTemplateColumns = `repeat(${cols}, ${cs}px)`;
+      grid.innerHTML = '';
+      const fs = Math.max(0.35, cs * 0.03) + 'rem';
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          cell.style.width = cs + 'px'; cell.style.height = cs + 'px'; cell.style.fontSize = fs;
+          const t = straitMap[r][c];
+          if (t === 1) cell.className = 'cell land iran';
+          else if (t === 2) cell.className = 'cell land oman';
+          else if (t === 3) cell.className = 'cell land uae';
+          else if (t === 4) cell.className = 'cell land island';
+          else {
+            cell.className = 'cell water hidden';
+            cell.addEventListener('click', () => handleClick(r, c));
+            cell.addEventListener('contextmenu', e => { e.preventDefault(); handleFlag(r, c); });
+            // Mobile: long press to flag, prevent scroll during press
+            let pt, didFlag = false;
+            cell.addEventListener('touchstart', e => {
+              didFlag = false;
+              pt = setTimeout(() => {
+                didFlag = true;
+                handleFlag(r, c);
+                // Vibrate if available
+                if (navigator.vibrate) navigator.vibrate(30);
+              }, 350);
+            }, { passive: true });
+            cell.addEventListener('touchend', e => {
+              clearTimeout(pt);
+              if (didFlag) { e.preventDefault(); }
+            });
+            cell.addEventListener('touchmove', () => { clearTimeout(pt); });
+          }
+          grid.appendChild(cell);
+        }
+      }
+    }
+
+    function handleClick(r, c) {
+      if (gameOver || gameWon || revealed[r][c] || straitMap[r][c] !== 0) return;
+      // If flag mode is active, flag instead of reveal
+      if (flagMode) { handleFlag(r, c); return; }
+      if (flagged[r][c]) return;
+      if (firstClick) { firstClick = false; placeMines(r, c); startTimer(); }
+      if (board[r][c] === -1) {
+        gameOver = true; clearInterval(timerInterval); clearInterval(oilTickInterval);
+        revealMines(r, c);
+        document.getElementById('gameMessage').textContent = '☠ MINE DETONATED — YOU\'RE FIRED! — VERY BAD!';
+        document.getElementById('gameMessage').className = 'game-message lose';
+        document.getElementById('statStrait').textContent = 'BLOCKED'; document.getElementById('statStrait').className = 'val red';
+        document.getElementById('statThreat').textContent = 'CRITICAL'; document.getElementById('statThreat').className = 'val red';
+        animateOilCrisis(); return;
+      }
+      floodReveal(r, c);
+      updateOilFromProgress();
+      checkWin();
+    }
+
+    function handleFlag(r, c) {
+      if (gameOver || gameWon || revealed[r][c] || straitMap[r][c] !== 0) return;
+      flagged[r][c] = !flagged[r][c];
+      const cell = getCell(r, c);
+      cell.classList.toggle('flagged', flagged[r][c]);
+      const fc = flagged.flat().filter(Boolean).length;
+      const rem = LEVELS[currentLevel]._m - fc;
+      document.getElementById('mineCount').textContent = rem;
+      document.getElementById('mineCount').classList.toggle('danger', rem < 0);
+    }
+
+    function floodReveal(r, c) {
+      const { rows, cols } = LEVELS[currentLevel];
+      const stack = [[r, c]];
+      while (stack.length) {
+        const [cr, cc] = stack.pop();
+        if (cr < 0 || cr >= rows || cc < 0 || cc >= cols) continue;
+        if (straitMap[cr][cc] !== 0 || revealed[cr][cc] || flagged[cr][cc] || board[cr][cc] === -1) continue;
+        revealed[cr][cc] = true; revealedCount++;
+        const cell = getCell(cr, cc); if (!cell) continue;
+        cell.classList.remove('hidden'); cell.classList.add('revealed', 'just-revealed');
+        const v = board[cr][cc];
+        if (v > 0) { cell.textContent = v; cell.classList.add('n' + v); }
+        else { for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) if (dr || dc) stack.push([cr + dr, cc + dc]); }
+      }
+      document.getElementById('cleared').textContent = Math.floor(revealedCount / totalSafe * 100) + '%';
+    }
+
+    function revealMines(hitR, hitC) {
+      const { rows, cols } = LEVELS[currentLevel];
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        if (board[r][c] === -1 && straitMap[r][c] === 0) {
+          const cell = getCell(r, c); if (!cell) continue;
+          cell.classList.remove('hidden', 'flagged');
+          cell.classList.add(r === hitR && c === hitC ? 'mine-hit' : 'mine-revealed');
+        }
+      }
+    }
+
+    function checkWin() {
+      if (revealedCount !== totalSafe) return;
+      gameWon = true; clearInterval(timerInterval); clearInterval(oilTickInterval);
+      document.getElementById('gameMessage').textContent = '✓ STRAIT CLEARED — TREMENDOUS SUCCESS — VERY STABLE GENIUS!';
+      document.getElementById('gameMessage').className = 'game-message win';
+      const { rows, cols } = LEVELS[currentLevel];
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++)
+        if (board[r][c] === -1 && !flagged[r][c] && straitMap[r][c] === 0) {
+          flagged[r][c] = true; const cell = getCell(r, c); if (cell) cell.classList.add('flagged');
+        }
+      document.getElementById('mineCount').textContent = '0';
+      animateOilWin();
+    }
+
+    function getCell(r, c) { return document.getElementById('grid').children[r * LEVELS[currentLevel].cols + c]; }
+    function startTimer() { timerInterval = setInterval(() => { seconds++; document.getElementById('timer').textContent = String(seconds).padStart(3, '0'); }, 1000); }
+
+    // =====================================================
+    // BLOOMBERG-STYLE OIL PRICE WITH LIVE FLUCTUATION
+    // =====================================================
+    function startOilFluctuations() {
+      clearInterval(oilTickInterval);
+      // Tick every 300ms for realistic feel
+      oilTickInterval = setInterval(() => {
+        if (gameOver || gameWon) return;
+        // Random walk around current target
+        const pct = revealedCount / Math.max(1, totalSafe);
+        const target = BASE_OIL - (BASE_OIL - WIN_OIL) * pct * 0.7; // partial effect
+        // Mean-reverting noise
+        const pull = (target - currentOilPrice) * 0.03;
+        const noise = (Math.random() - 0.5) * 0.8;
+        const momentum = oilHistory.length > 1 ?
+          (oilHistory[oilHistory.length - 1] - oilHistory[oilHistory.length - 2]) * 0.2 : 0;
+        currentOilPrice += pull + noise + momentum;
+        currentOilPrice = Math.max(50, Math.min(120, currentOilPrice));
+
+        oilHistory.push(currentOilPrice);
+        if (oilHistory.length > 200) oilHistory.shift();
+        oilHigh = Math.max(oilHigh, currentOilPrice);
+        oilLow = Math.min(oilLow, currentOilPrice);
+        updateOilTicker();
+      }, 300);
+    }
+
+    function updateOilFromProgress() {
+      const pct = revealedCount / totalSafe;
+      const target = BASE_OIL - (BASE_OIL - WIN_OIL) * pct;
+      // Jump price a bit toward target on each reveal
+      currentOilPrice += (target - currentOilPrice) * 0.15;
+      oilHistory.push(currentOilPrice);
+      if (oilHistory.length > 200) oilHistory.shift();
+      oilHigh = Math.max(oilHigh, currentOilPrice);
+      oilLow = Math.min(oilLow, currentOilPrice);
+      updateOilTicker();
+    }
+
+    function animateOilCrisis() {
+      let step = 0; const max = 40; const start = currentOilPrice;
+      const iv = setInterval(() => {
+        step++; const t = step / max;
+        currentOilPrice = start + (LOSE_OIL - start) * t * t + (Math.random() - 0.3) * 8;
+        oilHistory.push(currentOilPrice); if (oilHistory.length > 200) oilHistory.shift();
+        oilHigh = Math.max(oilHigh, currentOilPrice);
+        updateOilTicker();
+        // Volume spike
+        document.getElementById('statVol').textContent = (142 + step * 20).toFixed(0) + 'K';
+        if (step >= max) { clearInterval(iv); currentOilPrice = LOSE_OIL + Math.random() * 8; oilHistory.push(currentOilPrice); updateOilTicker(); showResult(false); }
+      }, 50);
+    }
+
+    function animateOilWin() {
+      let step = 0; const max = 25; const start = currentOilPrice;
+      const iv = setInterval(() => {
+        step++; const t = step / max;
+        currentOilPrice = start + (WIN_OIL - start) * t + (Math.random() - 0.5) * 0.5;
+        oilHistory.push(currentOilPrice); if (oilHistory.length > 200) oilHistory.shift();
+        oilLow = Math.min(oilLow, currentOilPrice);
+        updateOilTicker();
+        if (step >= max) { clearInterval(iv); currentOilPrice = WIN_OIL; oilHistory.push(currentOilPrice); updateOilTicker(); showResult(true); }
+      }, 70);
+    }
+
+    function updateOilTicker() {
+      const ch = currentOilPrice - BASE_OIL;
+      const up = ch > 0;
+      const pctCh = (ch / BASE_OIL * 100);
+
+      const p = document.getElementById('oilPrice');
+      p.textContent = '$' + currentOilPrice.toFixed(2);
+      p.className = 'oil-price-big ' + (up ? 'up' : 'down');
+
+      const ca = document.getElementById('oilChangeAbs');
+      ca.textContent = (up ? '▲ +' : '▼ ') + ch.toFixed(2);
+      ca.className = up ? 'up' : 'down';
+
+      const cp = document.getElementById('oilChangePct');
+      cp.textContent = '(' + (up ? '+' : '') + pctCh.toFixed(2) + '%)';
+      cp.className = up ? 'up' : 'down';
+
+      document.getElementById('statHigh').textContent = oilHigh.toFixed(2);
+      document.getElementById('statLow').textContent = oilLow.toFixed(2);
+
+      // Headlines
+      const tag = document.getElementById('headlineTag');
+      const txt = document.getElementById('headlineText');
+      if (currentOilPrice > 200) {
+        tag.textContent = 'BREAKING'; tag.className = 'headline-tag';
+        txt.textContent = '⚠ GLOBAL CRISIS — Strait blocked, 20% of world oil supply disrupted — Emergency NATO summit called';
+        txt.className = 'headline-text crisis';
+      } else if (currentOilPrice > 100) {
+        tag.textContent = 'ALERT'; tag.className = 'headline-tag';
+        txt.textContent = '⚠ Tensions escalating — tanker insurance rates surge — CENTCOM on high alert';
+        txt.className = 'headline-text crisis';
+      } else if (currentOilPrice < 68) {
+        tag.textContent = 'SECURE'; tag.className = 'headline-tag green';
+        txt.textContent = '✓ Strait secured — shipping lanes fully operational — "Tremendous job by our Navy" — WH';
+        txt.className = 'headline-text calm';
+      } else if (currentOilPrice < 75) {
+        tag.textContent = 'PROGRESS'; tag.className = 'headline-tag green';
+        txt.textContent = 'Mine clearance progressing — oil markets rally on improved strait security';
+        txt.className = 'headline-text calm';
+      } else {
+        tag.textContent = 'MONITOR'; tag.className = 'headline-tag orange';
+        txt.textContent = 'Operation Freedom Sweep underway — markets monitoring mine clearance progress';
+        txt.className = 'headline-text';
+      }
+
+      drawMiniChart(document.getElementById('oilChart'), oilHistory);
+    }
+
+    function drawMiniChart(canvas, data) {
+      if (!data.length) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr); ctx.clearRect(0, 0, rect.width, rect.height);
+      const w = rect.width, h = rect.height;
+      const mn = Math.min(...data) - 3, mx = Math.max(...data) + 3;
+      const range = mx - mn || 1;
+
+      // Grid lines
+      ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 0.5;
+      for (let i = 0; i < 5; i++) {
+        const y = h * i / 4;
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // Reference line at $85
+      const refY = h - ((BASE_OIL - mn) / range) * h;
+      ctx.strokeStyle = '#333'; ctx.setLineDash([2, 2]);
+      ctx.beginPath(); ctx.moveTo(0, refY); ctx.lineTo(w, refY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Candle-like bars for last N data points
+      const barW = Math.max(1, w / Math.max(data.length, 1));
+
+      // Area fill first
+      const last = data[data.length - 1];
+      const isUp = last > BASE_OIL;
+      ctx.beginPath();
+      data.forEach((p, i) => {
+        const x = (i / Math.max(1, data.length - 1)) * w;
+        const y = h - ((p - mn) / range) * h;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, isUp ? 'rgba(255,59,59,0.15)' : 'rgba(0,210,106,0.12)');
+      g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g; ctx.fill();
+
+      // Price line
+      ctx.strokeStyle = isUp ? '#ff3b3b' : '#00d26a'; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      data.forEach((p, i) => {
+        const x = (i / Math.max(1, data.length - 1)) * w;
+        const y = h - ((p - mn) / range) * h;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      // Current price dot
+      const lastX = w, lastY = h - ((last - mn) / range) * h;
+      ctx.fillStyle = isUp ? '#ff3b3b' : '#00d26a';
+      ctx.beginPath(); ctx.arc(lastX, lastY, 3, 0, Math.PI * 2); ctx.fill();
+
+      // Price label
+      ctx.font = '9px IBM Plex Mono'; ctx.fillStyle = isUp ? '#ff3b3b' : '#00d26a';
+      ctx.fillText('$' + last.toFixed(1), w - 45, lastY - 6);
+    }
+
+    // =====================================================
+    // RESULT OVERLAY
+    // =====================================================
+    const winQuotes = [
+      '"We cleared more mines than anyone thought possible. People are saying it\'s the greatest mine clearance in history." — @realDonaldTrump',
+      '"The Strait is open, oil is flowing. You\'re welcome, world. America and Israel, together, unbeatable." — POTUS',
+      '"I spoke to Bibi, he said \'Donald, this is incredible.\' And he\'s right. Tremendous operation." — Truth Social',
+      '"Nobody knows more about mines than me, believe me. Maybe water mines, maybe land mines. I know them all." — Mar-a-Lago Presser',
+    ];
+    const loseQuotes = [
+      '"You had ONE job. Clear the mines. You didn\'t clear the mines. YOU\'RE FIRED!" — @realDonaldTrump, from the boardroom',
+      '"I\'ve fired people for much less than blowing up a strait. You\'re fired, and frankly, you should be ashamed." — Truth Social',
+      '"You know what I said on The Apprentice? YOU\'RE FIRED. Same thing applies here. Tremendous failure. Get out." — Rally Speech',
+      '"Iran is laughing, oil is through the roof, and this so-called \'mine expert\' can\'t even click properly. FIRED!" — Mar-a-Lago Presser',
+      '"Even Sleepy Joe cleared more mines than this. And that\'s saying something. YOU\'RE FIRED! Next!" — Truth Social',
+      '"I looked at the board, I said \'this person has no idea what they\'re doing.\' Classic firing material. YOU\'RE FIRED." — Podcast Interview',
+    ];
+
+    function showResult(won) {
+      document.getElementById('resultFlags').textContent = won ? '🇺🇸🦅🇮🇱✡️🇺🇸' : '💥☠️💣🛢️📈';
+      // YOU'RE FIRED element
+      const fired = document.getElementById('youreFired');
+      fired.classList.toggle('visible', !won);
+      const t = document.getElementById('resultTitle');
+      t.textContent = won ? 'MISSION ACCOMPLISHED — MAGA' : 'TOTAL DISASTER — SAD!';
+      t.className = 'result-title ' + (won ? 'win' : 'lose');
+      document.getElementById('resultSubtitle').textContent =
+        won ? `Strait cleared in ${seconds}s — Freedom delivered` : `Mine detonated at ${seconds}s — The boss is NOT happy`;
+      const op = document.getElementById('resultOilPrice');
+      op.textContent = '$' + (won ? WIN_OIL : LOSE_OIL).toFixed(2);
+      op.className = 'result-oil-price ' + (won ? 'low' : 'high');
+      const hl = document.getElementById('resultHeadline');
+      if (won) { hl.textContent = 'Markets surge — "Best deal for oil since ever" — WH spokesperson'; hl.className = 'result-headline calm'; }
+      else { hl.textContent = 'EMERGENCY: Global energy crisis — gas lines forming — "Where is the Navy?!"'; hl.className = 'result-headline crisis'; }
+      document.getElementById('resultQuote').textContent =
+        won ? winQuotes[Math.floor(Math.random() * winQuotes.length)] :
+          loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
+      setTimeout(() => drawResultChart(document.getElementById('resultChart'), oilHistory, won), 100);
+      document.getElementById('resultOverlay').classList.add('visible');
+    }
+
+    function drawResultChart(canvas, data, won) {
+      if (!data.length) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr); ctx.clearRect(0, 0, rect.width, rect.height);
+      const w = rect.width, h = rect.height, pad = 28;
+      const mn = Math.min(...data, 50) - 10, mx = Math.max(...data, 100) + 10;
+      const range = mx - mn || 1;
+
+      // Grid
+      ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 0.5;
+      ctx.font = '8px IBM Plex Mono'; ctx.fillStyle = '#444';
+      for (let p = Math.ceil(mn / 50) * 50; p <= mx; p += 50) {
+        const y = h - pad - ((p - mn) / range) * (h - pad * 2);
+        ctx.beginPath(); ctx.moveTo(pad, y); ctx.lineTo(w, y); ctx.stroke();
+        ctx.fillText('$' + p, 0, y + 3);
+      }
+
+      // Line
+      const col = won ? '#00d26a' : '#ff3b3b';
+      ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.beginPath();
+      data.forEach((p, i) => {
+        const x = pad + (i / Math.max(1, data.length - 1)) * (w - pad);
+        const y = h - pad - ((p - mn) / range) * (h - pad * 2);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.shadowColor = col; ctx.shadowBlur = 6; ctx.stroke(); ctx.shadowBlur = 0;
+      const lx = pad + ((data.length - 1) / Math.max(1, data.length - 1)) * (w - pad);
+      ctx.lineTo(lx, h - pad); ctx.lineTo(pad, h - pad); ctx.closePath();
+      const gr = ctx.createLinearGradient(0, 0, 0, h);
+      gr.addColorStop(0, won ? 'rgba(0,210,106,0.15)' : 'rgba(255,59,59,0.15)');
+      gr.addColorStop(1, 'transparent');
+      ctx.fillStyle = gr; ctx.fill();
+    }
+
+    function closeOverlay() { document.getElementById('resultOverlay').classList.remove('visible'); resetGame(); }
+
+    window.addEventListener('resize', renderGrid);
+    resetGame();
+  </script>
+</body>
+
+</html>
