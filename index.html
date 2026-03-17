@@ -1492,7 +1492,10 @@
     }
 
     function handleClick(r, c) {
-      if (gameOver || gameWon || revealed[r][c] || straitMap[r][c] !== 0) return;
+      if (gameOver || gameWon || straitMap[r][c] !== 0) return;
+      // Chord: click revealed number to auto-clear if enough flags around it
+      if (revealed[r][c] && board[r][c] > 0) { chordReveal(r, c); return; }
+      if (revealed[r][c]) return;
       // If flag mode is active, flag instead of reveal
       if (flagMode) { handleFlag(r, c); return; }
       if (flagged[r][c]) return;
@@ -1520,6 +1523,35 @@
       const rem = LEVELS[currentLevel]._m - fc;
       document.getElementById('mineCount').textContent = rem;
       document.getElementById('mineCount').classList.toggle('danger', rem < 0);
+    }
+
+    function chordReveal(r, c) {
+      const { rows, cols } = LEVELS[currentLevel];
+      let adjFlags = 0;
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        if (!dr && !dc) continue;
+        const nr = r + dr, nc = c + dc;
+        if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && flagged[nr][nc]) adjFlags++;
+      }
+      if (adjFlags !== board[r][c]) return;
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        if (!dr && !dc) continue;
+        const nr = r + dr, nc = c + dc;
+        if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+        if (revealed[nr][nc] || flagged[nr][nc] || straitMap[nr][nc] !== 0) continue;
+        if (board[nr][nc] === -1) {
+          gameOver = true; clearInterval(timerInterval); clearInterval(oilTickInterval);
+          revealMines(nr, nc);
+          document.getElementById('gameMessage').textContent = '☠ MINE DETONATED — YOU\'RE FIRED! — VERY BAD!';
+          document.getElementById('gameMessage').className = 'game-message lose';
+          document.getElementById('statStrait').textContent = 'BLOCKED'; document.getElementById('statStrait').className = 'val red';
+          document.getElementById('statThreat').textContent = 'CRITICAL'; document.getElementById('statThreat').className = 'val red';
+          animateOilCrisis(); return;
+        }
+        floodReveal(nr, nc);
+      }
+      updateOilFromProgress();
+      checkWin();
     }
 
     function floodReveal(r, c) {
