@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>🇺🇸🇮🇱 OPERATION FREEDOM SWEEP — Strait of Hormuz 🦅</title>
+  <title>🇺🇸 OPERATION FREEDOM SWEEP — Strait of Hormuz 🦅</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&family=Anton&family=Oswald:wght@400;600;700&display=swap"
     rel="stylesheet">
@@ -14,7 +14,7 @@
       --freedom-red: #BF0A30;
       --freedom-white: #FFFFFF;
       --star-gold: #FFD700;
-      --israel-blue: #0038b8;
+      --navy-blue: #001f5c;
       --bloomberg-black: #0a0a0a;
       --bloomberg-dark: #121212;
       --bloomberg-panel: #1a1a1a;
@@ -49,7 +49,7 @@
     /* PATRIOTIC BANNER */
     .freedom-banner {
       width: 100%;
-      background: linear-gradient(90deg, var(--freedom-blue) 0%, var(--freedom-blue) 40%, var(--freedom-red) 40%, var(--freedom-red) 60%, var(--israel-blue) 60%, var(--israel-blue) 100%);
+      background: linear-gradient(90deg, var(--freedom-blue) 0%, var(--freedom-blue) 40%, var(--freedom-red) 40%, var(--freedom-red) 60%, var(--navy-blue) 60%, var(--navy-blue) 100%);
       height: 4px;
     }
 
@@ -638,8 +638,20 @@
       font-size: 0.5rem;
       color: var(--bloomberg-dim);
       letter-spacing: 2px;
-      padding: 8px 16px 16px;
+      padding: 8px 16px 8px;
       opacity: 0.5;
+    }
+
+    .satire-disclaimer {
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--bloomberg-dim);
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 8px 24px 24px;
+      line-height: 1.5;
+      opacity: 0.6;
+      font-style: italic;
     }
 
     /* RESULT OVERLAY */
@@ -1149,20 +1161,19 @@
     <div class="logo">FREEDOM TERMINAL™</div>
     <div class="news-ticker-strip">
       <div class="news-ticker-text" id="newsTicker">
-        🦅 BREAKING: USS Abraham Lincoln carrier group deployed to Persian Gulf ★ Iron Dome upgrade signed into law ★
+        🦅 BREAKING: USS Abraham Lincoln carrier group deployed to Persian Gulf ★
         "Nobody secures a strait better than us, believe me" — 45th & 47th President ★ CENTCOM: "Mine clearance
-        operations proceeding bigly" ★ IDF Naval Command offers technical support ★ Oil futures react to Freedom Sweep
-        operations ★ Mar-a-Lago situation room: "Looking very good, very strong" ★ 🇺🇸🇮🇱 GREATEST ALLIANCE IN HISTORY
-        🇮🇱🇺🇸 ★
+        operations proceeding bigly" ★ Oil futures react to Freedom Sweep
+        operations ★ Mar-a-Lago situation room: "Looking very good, very strong" ★ 🇺🇸 AMERICA FIRST 🇺🇸 ★
       </div>
     </div>
-    <div class="top-right-flags">🇺🇸🇮🇱🦅</div>
+    <div class="top-right-flags">🇺🇸🦅</div>
   </div>
 
   <div class="header">
     <h1>🦅 OPERATION FREEDOM SWEEP 🦅</h1>
     <div class="tagline">STRAIT OF HORMUZ • NAVAL MINE CLEARANCE DIVISION</div>
-    <div class="eagle-line">★ MAKING THE STRAIT GREAT AGAIN ★ A JOINT US-ISRAEL INITIATIVE ★ TREMENDOUS SECURITY ★</div>
+    <div class="eagle-line">★ MAKING THE STRAIT GREAT AGAIN ★ TREMENDOUS SECURITY ★ AMERICA FIRST ★</div>
   </div>
 
   <div class="game-container">
@@ -1247,7 +1258,12 @@
 
     <div class="footer">
       ★ FREEDOM TERMINAL™ — A PRODUCT OF AMERICAN EXCELLENCE ★ NOT FINANCIAL ADVICE ★ VERY LEGAL, VERY COOL ★
-      <br>© 2025 Kulia Holding AS
+    </div>
+    <div class="satire-disclaimer">
+      This is a work of satire. It is a commentary on how media coverage often frames serious geopolitical
+      conflicts primarily through the lens of market impact and economic consequence — oil prices, stock
+      tickers, supply chains — rather than the human lives affected. No real political endorsement is
+      intended or implied.
     </div>
   </div>
 
@@ -1906,8 +1922,8 @@
     // =====================================================
     const winQuotes = [
       '"We cleared more mines than anyone thought possible. People are saying it\'s the greatest mine clearance in history." — @realDonaldTrump',
-      '"The Strait is open, oil is flowing. You\'re welcome, world. America and Israel, together, unbeatable." — POTUS',
-      '"I spoke to Bibi, he said \'Donald, this is incredible.\' And he\'s right. Tremendous operation." — Truth Social',
+      '"The Strait is open, oil is flowing. You\'re welcome, world. America first, always." — POTUS',
+      '"The generals called me, they said \'Sir, this is the greatest naval operation in history.\' And they\'re right." — Truth Social',
       '"Nobody knows more about mines than me, believe me. Maybe water mines, maybe land mines. I know them all." — Mar-a-Lago Presser',
     ];
     const loseQuotes = [
@@ -1926,7 +1942,7 @@
     ];
 
     function showResult(won) {
-      document.getElementById('resultFlags').textContent = won ? '🇺🇸🦅🇮🇱✡️🇺🇸' : '💥☠️💣🛢️📈';
+      document.getElementById('resultFlags').textContent = won ? '🇺🇸🦅🗽🦅🇺🇸' : '💥☠️💣🛢️📈';
       // YOU'RE FIRED element
       const fired = document.getElementById('youreFired');
       fired.classList.toggle('visible', !won);
