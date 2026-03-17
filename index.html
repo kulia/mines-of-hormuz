@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>🇺🇸🇮🇱 OPERATION FREEDOM SWEEP — Strait of Hormuz 🦅</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600;700&family=Anton&family=Oswald:wght@400;600;700&display=swap"
@@ -932,6 +932,86 @@
       }
     }
 
+    @media (max-width: 600px) {
+      /* Hide less-important panels to save space */
+      .news-ticker-strip { display: none; }
+      .oil-chart-panel { display: none; }
+      .oil-stats { display: none; }
+
+      /* Compact spacing */
+      .terminal-row { margin: 4px 0; }
+      .terminal-panel { padding: 4px 8px; }
+      .oil-headline-bar { margin-bottom: 3px; padding: 3px 8px; font-size: 0.5rem; }
+      .headline-tag { font-size: 0.45rem; }
+      .controls-row { margin-bottom: 3px; }
+      .header { padding: 6px 8px 2px; }
+      .header h1 { font-size: 1.05rem; letter-spacing: 2px; }
+      .header .tagline { font-size: 0.5rem; letter-spacing: 2px; }
+      .header .eagle-line { display: none; }
+      .game-container { padding: 0 4px 10px; }
+
+      /* Oil price compact */
+      .oil-main { flex: 1 1 auto; }
+      .oil-price-big { font-size: 1.8rem; }
+      .oil-change-row { font-size: 0.6rem; }
+
+      /* Difficulty buttons fill width equally */
+      .diff-panel { padding: 4px 6px; justify-content: center; }
+      .diff-panel .panel-label { font-size: 0.5rem; letter-spacing: 1px; }
+      .diff-btn { flex: 1; text-align: center; min-width: 0; padding: 6px 4px; }
+
+      /* Status panel */
+      .status-panel { padding: 4px 8px; gap: 8px; }
+      .status-item .s-value { font-size: 0.95rem; }
+      .reset-btn { font-size: 0.65rem; padding: 4px 10px; letter-spacing: 2px; }
+
+      /* Floating flag toggle for easy thumb access */
+      #flagToggle {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        z-index: 50;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        border-radius: 6px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        background: var(--bloomberg-dark);
+        border-width: 2px;
+      }
+
+      #flagToggle.active {
+        background: rgba(255, 59, 59, 0.25);
+        border-color: var(--bloomberg-red);
+        color: var(--bloomberg-red);
+      }
+
+      /* Game area */
+      .game-message { font-size: 0.7rem; letter-spacing: 1px; min-height: 20px; padding: 2px; }
+      .grid-wrapper { padding: 2px 0; }
+      .grid-header { font-size: 0.4rem; }
+      .legend-bar { gap: 6px; padding: 3px 4px; }
+      .legend-item { font-size: 0.45rem; }
+
+      /* Top banner */
+      .top-banner { padding: 4px 10px; }
+      .top-banner .logo { font-size: 0.7rem; letter-spacing: 1px; }
+      .top-right-flags { font-size: 0.9rem; }
+
+      /* Result overlay */
+      .result-card { padding: 14px; }
+      .result-title { font-size: 1.2rem; letter-spacing: 2px; }
+      .result-oil-price { font-size: 1.8rem; }
+      .youre-fired { font-size: 1.8rem; letter-spacing: 2px; }
+      .youre-fired .finger { font-size: 1.4rem; }
+      .youre-fired .subfire { font-size: 0.7rem; letter-spacing: 2px; }
+      .result-trump-quote { font-size: 0.55rem; }
+      .result-btn { font-size: 0.75rem; padding: 6px 20px; }
+
+      /* Space for floating flag button */
+      .footer { padding-bottom: 60px; }
+    }
+
     @media (max-width: 420px) {
       .game-container {
         padding: 0 4px 10px;
@@ -1339,12 +1419,26 @@
     // =====================================================
     // GAME STATE
     // =====================================================
-    const LEVELS = {
+    const LEVELS_DESKTOP = {
       patrol: { rows: 24, cols: 38, mines: 35 },
       frigate: { rows: 26, cols: 42, mines: 65 },
       destroyer: { rows: 28, cols: 46, mines: 110 },
       admiral: { rows: 30, cols: 50, mines: 160 },
     };
+
+    const LEVELS_MOBILE = {
+      patrol: { rows: 14, cols: 20, mines: 18 },
+      frigate: { rows: 16, cols: 20, mines: 30 },
+      destroyer: { rows: 18, cols: 20, mines: 45 },
+      admiral: { rows: 20, cols: 20, mines: 60 },
+    };
+
+    let LEVELS = { ...LEVELS_DESKTOP };
+
+    function updateLevelsForScreen() {
+      const src = window.innerWidth <= 600 ? LEVELS_MOBILE : LEVELS_DESKTOP;
+      for (const key in src) LEVELS[key] = { ...src[key] };
+    }
 
     let currentLevel = 'patrol';
     let straitMap = [], board = [], revealed = [], flagged = [];
@@ -1354,6 +1448,7 @@
     let oilHistory = [], currentOilPrice = 85;
     let oilTickInterval = null;
     let oilHigh = 102, oilLow = 102;
+    let oilTick = 0, oilPriceLoss = false;
     let flagMode = false;
     const BASE_OIL = 102, WIN_OIL = 60, LOSE_OIL = 255;
 
@@ -1379,10 +1474,11 @@
     }
 
     function resetGame() {
+      updateLevelsForScreen();
       const { rows, cols, mines } = LEVELS[currentLevel];
       gameOver = gameWon = false; firstClick = true;
       seconds = revealedCount = 0;
-      currentOilPrice = BASE_OIL; oilHistory = [BASE_OIL]; oilHigh = 102; oilLow = 102;
+      currentOilPrice = BASE_OIL; oilHistory = [BASE_OIL]; oilHigh = 102; oilLow = 102; oilTick = 0; oilPriceLoss = false;
       flagMode = false;
       const flagBtn = document.getElementById('flagToggle');
       if (flagBtn) { flagBtn.classList.remove('active'); flagBtn.textContent = '🇺🇸 FLAG'; }
@@ -1446,15 +1542,16 @@
       const { rows, cols } = LEVELS[currentLevel];
       const grid = document.getElementById('grid');
       const maxW = Math.min(window.innerWidth - 16, 1120);
+      const minCell = window.innerWidth <= 600 ? 16 : 10;
       let cs = Math.floor((maxW - cols) / cols);
-      cs = Math.max(10, Math.min(24, cs));
+      cs = Math.max(minCell, Math.min(24, cs));
       // On very small screens, ensure we fit
       if (cs * cols > maxW) cs = Math.floor(maxW / cols) - 1;
-      cs = Math.max(10, cs);
+      cs = Math.max(minCell, cs);
 
       grid.style.gridTemplateColumns = `repeat(${cols}, ${cs}px)`;
       grid.innerHTML = '';
-      const fs = Math.max(0.35, cs * 0.03) + 'rem';
+      const fs = Math.max(0.4, cs * 0.035) + 'rem';
 
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -1607,22 +1704,44 @@
       // Tick every 300ms for realistic feel
       oilTickInterval = setInterval(() => {
         if (gameOver || gameWon) return;
-        // Random walk around current target
+        oilTick++;
         const pct = revealedCount / Math.max(1, totalSafe);
-        const target = BASE_OIL - (BASE_OIL - WIN_OIL) * pct * 0.7; // partial effect
+        // Time pressure: oil rises over time (~5 min to $250 without clearing)
+        // Clearing mines slows the rise
+        const clearEffect = (BASE_OIL - WIN_OIL) * pct * 0.7;
+        const timePressure = oilTick * 0.15 * (1 - pct * 0.7);
+        const target = BASE_OIL - clearEffect + timePressure;
         // Mean-reverting noise
         const pull = (target - currentOilPrice) * 0.03;
-        const noise = (Math.random() - 0.5) * 0.8;
+        const noise = (Math.random() - 0.5) * 1.2;
         const momentum = oilHistory.length > 1 ?
           (oilHistory[oilHistory.length - 1] - oilHistory[oilHistory.length - 2]) * 0.2 : 0;
-        currentOilPrice += pull + noise + momentum;
-        currentOilPrice = Math.max(50, Math.min(120, currentOilPrice));
+        // Sporadic geopolitical spikes
+        const spike = Math.random() < 0.02 ? (Math.random() * 4 + 1) : 0;
+        currentOilPrice += pull + noise + momentum + spike;
+        currentOilPrice = Math.max(50, Math.min(300, currentOilPrice));
 
         oilHistory.push(currentOilPrice);
         if (oilHistory.length > 200) oilHistory.shift();
         oilHigh = Math.max(oilHigh, currentOilPrice);
         oilLow = Math.min(oilLow, currentOilPrice);
         updateOilTicker();
+
+        // $250 = economic catastrophe = you're fired
+        if (currentOilPrice >= 250) {
+          oilPriceLoss = true;
+          gameOver = true;
+          clearInterval(timerInterval);
+          clearInterval(oilTickInterval);
+          document.getElementById('gameMessage').textContent = '📈 OIL HIT $250 — ECONOMIC CATASTROPHE — YOU\'RE FIRED!';
+          document.getElementById('gameMessage').className = 'game-message lose';
+          document.getElementById('statStrait').textContent = 'CRISIS';
+          document.getElementById('statStrait').className = 'val red';
+          document.getElementById('statThreat').textContent = 'MAXIMUM';
+          document.getElementById('statThreat').className = 'val red';
+          revealMines(-1, -1);
+          showResult(false);
+        }
       }, 300);
     }
 
@@ -1687,11 +1806,19 @@
       // Headlines
       const tag = document.getElementById('headlineTag');
       const txt = document.getElementById('headlineText');
-      if (currentOilPrice > 200) {
+      if (currentOilPrice > 230) {
         tag.textContent = 'BREAKING'; tag.className = 'headline-tag';
-        txt.textContent = '⚠ GLOBAL CRISIS — Strait blocked, 20% of world oil supply disrupted — Emergency NATO summit called';
+        txt.textContent = '⚠ OIL NEAR $250 — Total economic meltdown imminent — "CLEAR THE MINES NOW!" — POTUS';
         txt.className = 'headline-text crisis';
-      } else if (currentOilPrice > 100) {
+      } else if (currentOilPrice > 180) {
+        tag.textContent = 'BREAKING'; tag.className = 'headline-tag';
+        txt.textContent = '⚠ GLOBAL CRISIS — Gas lines forming, airlines grounding flights — Emergency NATO summit called';
+        txt.className = 'headline-text crisis';
+      } else if (currentOilPrice > 140) {
+        tag.textContent = 'URGENT'; tag.className = 'headline-tag';
+        txt.textContent = '⚠ Markets in turmoil — "You better hurry up, this is getting very bad!" — WH spokesperson';
+        txt.className = 'headline-text crisis';
+      } else if (currentOilPrice > 115) {
         tag.textContent = 'ALERT'; tag.className = 'headline-tag';
         txt.textContent = '⚠ Tensions escalating — tanker insurance rates surge — CENTCOM on high alert';
         txt.className = 'headline-text crisis';
@@ -1791,6 +1918,12 @@
       '"Even Sleepy Joe cleared more mines than this. And that\'s saying something. YOU\'RE FIRED! Next!" — Truth Social',
       '"I looked at the board, I said \'this person has no idea what they\'re doing.\' Classic firing material. YOU\'RE FIRED." — Podcast Interview',
     ];
+    const oilLoseQuotes = [
+      '"$250 oil?! I had gas at $1.87 during my first term. YOU LET IT HIT TWO-FIFTY. YOU\'RE FIRED!" — Truth Social',
+      '"The economy is crashing, gas is $12 a gallon, and this person just sat there watching. FIRED! Tremendous incompetence." — Rally Speech',
+      '"I told them, clear the mines fast or the price goes up. They didn\'t listen. Nobody ever listens. YOU\'RE FIRED." — Mar-a-Lago Presser',
+      '"Oil at $250. The Ayatollah is celebrating. You should be ashamed. Pack your bags. YOU\'RE FIRED!" — Podcast Interview',
+    ];
 
     function showResult(won) {
       document.getElementById('resultFlags').textContent = won ? '🇺🇸🦅🇮🇱✡️🇺🇸' : '💥☠️💣🛢️📈';
@@ -1801,16 +1934,19 @@
       t.textContent = won ? 'MISSION ACCOMPLISHED — MAGA' : 'TOTAL DISASTER — SAD!';
       t.className = 'result-title ' + (won ? 'win' : 'lose');
       document.getElementById('resultSubtitle').textContent =
-        won ? `Strait cleared in ${seconds}s — Freedom delivered` : `Mine detonated at ${seconds}s — The boss is NOT happy`;
+        won ? `Strait cleared in ${seconds}s — Freedom delivered` :
+        oilPriceLoss ? `Oil hit $250 at ${seconds}s — Total economic meltdown` :
+        `Mine detonated at ${seconds}s — The boss is NOT happy`;
       const op = document.getElementById('resultOilPrice');
-      op.textContent = '$' + (won ? WIN_OIL : LOSE_OIL).toFixed(2);
+      op.textContent = '$' + currentOilPrice.toFixed(2);
       op.className = 'result-oil-price ' + (won ? 'low' : 'high');
       const hl = document.getElementById('resultHeadline');
       if (won) { hl.textContent = 'Markets surge — "Best deal for oil since ever" — WH spokesperson'; hl.className = 'result-headline calm'; }
       else { hl.textContent = 'EMERGENCY: Global energy crisis — gas lines forming — "Where is the Navy?!"'; hl.className = 'result-headline crisis'; }
+      const losePool = oilPriceLoss ? oilLoseQuotes : loseQuotes;
       document.getElementById('resultQuote').textContent =
         won ? winQuotes[Math.floor(Math.random() * winQuotes.length)] :
-          loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
+          losePool[Math.floor(Math.random() * losePool.length)];
       setTimeout(() => drawResultChart(document.getElementById('resultChart'), oilHistory, won), 100);
       document.getElementById('resultOverlay').classList.add('visible');
     }
@@ -1855,7 +1991,29 @@
 
     function closeOverlay() { document.getElementById('resultOverlay').classList.remove('visible'); resetGame(); }
 
-    window.addEventListener('resize', renderGrid);
+    // Resize cells without rebuilding grid (preserves game state)
+    let _resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(_resizeTimer);
+      _resizeTimer = setTimeout(() => {
+        const { cols } = LEVELS[currentLevel];
+        const grid = document.getElementById('grid');
+        if (!grid.children.length) return;
+        const maxW = Math.min(window.innerWidth - 16, 1120);
+        const minCell = window.innerWidth <= 600 ? 16 : 10;
+        let cs = Math.floor((maxW - cols) / cols);
+        cs = Math.max(minCell, Math.min(24, cs));
+        if (cs * cols > maxW) cs = Math.floor(maxW / cols) - 1;
+        cs = Math.max(minCell, cs);
+        grid.style.gridTemplateColumns = `repeat(${cols}, ${cs}px)`;
+        const fs = Math.max(0.4, cs * 0.035) + 'rem';
+        for (const cell of grid.children) {
+          cell.style.width = cs + 'px';
+          cell.style.height = cs + 'px';
+          cell.style.fontSize = fs;
+        }
+      }, 150);
+    });
     resetGame();
   </script>
 </body>
